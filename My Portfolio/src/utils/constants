@@ -34,9 +34,9 @@ import postgreLogo from "../assets/tech_logo/postgre.png";
 import csharpLogo from "../assets/tech_logo/csharp.png";
 
 // Experience Section Logo's
-import webverseLogo from "../assets/company_logo/webverse_logo.png";
-import agcLogo from "../assets/company_logo/agc_logo.png";
-import newtonschoolLogo from "../assets/company_logo/newtonschool_logo.png";
+import ttlLogo from "../assets/company_logo/ttl_logo.png";
+import hrcLogo from "../assets/company_logo/highradius_logo.jpg";
+
 
 // Education Section Logo's
 import kiitLogo from "../assets/education_logo/kiit_logo.png";
@@ -108,10 +108,10 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: webverseLogo,
-    role: "Fullstack Developer",
-    company: "Webverse Digital",
-    date: "April 2024 - Present",
+    img: ttlLogo,
+    role: "Software Developer",
+    company: "Tata Technologies Limited",
+    date: "August 2023 - Present",
     desc: "Developed dynamic and scalable web applications using the MERN stack, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
     skills: [
       "HTML",
@@ -128,10 +128,10 @@ export const experiences = [
   },
   {
     id: 1,
-    img: agcLogo,
-    role: "Fullstack Engineer",
-    company: "Agumentik Group of Companies",
-    date: "July 2023 - March 2024",
+    img: hrcLogo,
+    role: "ML Intern",
+    company: "High Radius Corporation",
+    date: "April 2022 - May 2023",
     desc: "Contributed to innovative projects as a Fullstack Engineer, leading both frontend and backend development using technologies such as HTML, CSS, JavaScript, PHP, SQL, Bootstrap, and ReactJS. Worked closely with the team to deliver responsive, high-performance web applications and improve user experience through seamless integration of various technologies.",
     skills: [
       "ReactJS",
@@ -145,10 +145,10 @@ export const experiences = [
   },
   {
     id: 2,
-    img: newtonschoolLogo,
-    role: "Frontend Intern",
-    company: "Newton School",
-    date: "September 2021 - August 2022",
+    img: hrcLogo,
+    role: "Winter Intern",
+    company: "High Radius Corporation",
+    date: "December 2021 - Feburary 2022",
     desc: "Worked as a Frontend Developer Intern, designing and implementing scalable UI components and responsive websites using HTML, CSS, JavaScript, Bootstrap, and Material UI. Collaborated with the design team to translate wireframes and prototypes from Figma into interactive, user-friendly web pages.",
     skills: ["HTML", "CSS", "Javascript", "Bootstrap", "Figma", "Material UI"],
   },
@@ -168,7 +168,7 @@ export const education = [
     id: 1,
     img: davLogo,
     school: "DAV Public School, Kansbahal",
-    date: "Apr 2018 - March 2019",
+    date: "April 2018 - March 2019",
     grade: "90.6%",
    desc: "I completed my class 12 education from DAV Public School, Kansbahal, under the CBSE board, where I studied Physics, Chemistry, and Mathematics (PCM).",
     degree: "CBSE(XII) - PCM",
@@ -177,7 +177,7 @@ export const education = [
     id: 2,
     img: davLogo,
     school: "DAV Public School, Kansbahal",
-    date: "Apr 2015 - March 2016",
+    date: "April 2015 - March 2016",
     grade: "93.1%",
     desc: "I completed my class 10 education from DAV Public School, Kansbahal, under the CBSE board, where I studied Physics, Chemistry, and Mathematics (PCM).",
     degree: "CBSE(X) - PCM ",

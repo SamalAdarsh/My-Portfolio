@@ -29,58 +29,58 @@ const Experience = () => {
               index % 2 === 0 ? "sm:justify-end" : "sm:justify-start"
             }`}
           >
-            {/* Timeline Circle */}
-            <div className="absolute left-8 sm:left-1/2 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
+            {/* Timeline Circle - Fixed aspect ratio so logos don't squish */}
+            <div className="absolute left-8 sm:left-1/2 transform -translate-x-1/2 bg-white border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10 overflow-hidden">
               <img
                 src={experience.img}
                 alt={experience.company}
-                className="w-full h-full object-cover rounded-full"
+                className="w-3/4 h-3/4 object-contain"
               />
             </div>
 
             {/* Content Section */}
             <div
-              className={`w-[75%] sm:w-[45%] p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md  transform transition-transform duration-300 hover:scale-105`}
+              className={`w-[75%] sm:w-[45%] p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] transform transition-transform duration-300 hover:scale-105`}
             >
               {/* Flex container for image and text */}
-              <div className="flex items-center space-x-6">
-                {/* Company Logo/Image */}
-                <div className="w-16 h-16 bg-white rounded-md overflow-hidden shrink-0">
+              <div className="flex items-center gap-4 sm:gap-6">
+                
+                {/* Company Logo/Image Inside Card - Fixed visibility & scaling */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg flex-shrink-0 flex items-center justify-center p-2 shadow-inner">
                   <img
                     src={experience.img}
                     alt={experience.company}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
                 {/* Role, Company Name, and Date */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-white">
-                      {experience.role}
-                    </h3>
-                    <h4 className="text-md sm:text-sm text-gray-300">
-                      {experience.company}
-                    </h4>
-                  </div>
-                  {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{experience.date}</p>
+                <div className="flex flex-col">
+                  <h3 className="text-lg sm:text-2xl font-semibold text-white leading-tight">
+                    {experience.role}
+                  </h3>
+                  <h4 className="text-sm text-gray-300 mt-1">
+                    {experience.company}
+                  </h4>
+                  {/* Date right below the company name */}
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{experience.date}</p>
                 </div>
               </div>
 
-              <p className="mt-4 text-gray-400">{experience.desc}</p>
-              <div className="mt-4">
-                <h5 className="font-medium text-white">Skills:</h5>
-                <ul className="flex flex-wrap mt-2">
+              <p className="mt-6 text-gray-400 text-sm sm:text-base leading-relaxed">{experience.desc}</p>
+              
+              <div className="mt-6">
+                <h5 className="font-medium text-white mb-3">Skills:</h5>
+                <div className="flex flex-wrap gap-2">
                   {experience.skills.map((skill, skillIndex) => (
-                    <li
+                    <span
                       key={skillIndex}
-                      className="bg-[#8245ec] text-gray-300 px-4 py-1 text-xs sm:text-sm rounded-lg mr-2 mb-2 border border-gray-400"
+                      className="bg-[#8245ec] text-white px-3 py-1 text-xs sm:text-sm rounded-lg border border-purple-400/50"
                     >
                       {skill}
-                    </li>
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>
