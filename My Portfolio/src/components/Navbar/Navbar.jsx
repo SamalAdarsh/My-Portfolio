@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -38,17 +38,19 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
-        isScrolled ? "bg-[#050414] bg-opacity-50 backdrop-blur-md shadow-md" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
+        isScrolled 
+          ? "bg-[#050414]/60 backdrop-blur-md shadow-lg shadow-purple-900/10 border-b border-white/5" 
+          : "bg-transparent"
       }`}
     >
       <div className="text-white py-5 flex justify-between items-center">
         {/* Logo */}
         <div className="text-lg font-semibold cursor-pointer">
           <span className="text-[#8245ec]">&lt;</span>
-          <span className="text-white">Tarun</span>
+          <span className="text-white">Adarsh</span>
           <span className="text-[#8245ec]">/</span>
-          <span className="text-white">Kaushik</span>
+          <span className="text-white">Samal</span>
           <span className="text-[#8245ec]">&gt;</span>
         </div>
 
@@ -57,7 +59,7 @@ const Navbar = () => {
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`cursor-pointer hover:text-[#8245ec] ${
+              className={`cursor-pointer hover:text-[#8245ec] transition-colors ${
                 activeSection === item.id ? "text-[#8245ec]" : ""
               }`}
             >
@@ -74,7 +76,7 @@ const Navbar = () => {
             href="https://github.com/codingmastr"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec]"
+            className="text-gray-300 hover:text-[#8245ec] transition-colors"
           >
             <FaGithub size={24} />
           </a>
@@ -82,7 +84,7 @@ const Navbar = () => {
             href="https://www.linkedin.com/in/tarun-kaushik-553b441a4"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec]"
+            className="text-gray-300 hover:text-[#8245ec] transition-colors"
           >
             <FaLinkedin size={24} />
           </a>
@@ -106,12 +108,12 @@ const Navbar = () => {
 
       {/* Mobile Menu Items */}
       {isOpen && (
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-opacity-50 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden">
-          <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-[90%] bg-[#050414]/80 backdrop-blur-xl border border-white/10 z-50 rounded-2xl shadow-2xl md:hidden">
+          <ul className="flex flex-col items-center space-y-6 py-8 text-gray-300">
             {menuItems.map((item) => (
               <li
                 key={item.id}
-                className={`cursor-pointer hover:text-white ${
+                className={`cursor-pointer text-lg tracking-wide hover:text-white transition-colors ${
                   activeSection === item.id ? "text-[#8245ec]" : ""
                 }`}
               >
@@ -120,22 +122,22 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
-            <div className="flex space-x-4">
+            <div className="flex space-x-6 pt-4 border-t border-white/10 w-3/4 justify-center">
               <a
                 href="https://github.com/codingmastr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
+                className="text-gray-300 hover:text-white transition-colors"
               >
-                <FaGithub size={24} />
+                <FaGithub size={26} />
               </a>
               <a
                 href="https://www.linkedin.com/in/tarun-kaushik-553b441a4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
+                className="text-gray-300 hover:text-white transition-colors"
               >
-                <FaLinkedin size={24} />
+                <FaLinkedin size={26} />
               </a>
             </div>
           </ul>
