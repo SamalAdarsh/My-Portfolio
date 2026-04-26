@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
   const form = useRef();
+  // eslint-disable-next-line no-unused-vars
   const [isSent, setIsSent] = useState(false);
 
   const sendEmail = (e) => {
@@ -12,10 +13,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_axbtt7a",  // Replace with your EmailJS Service ID
-        "template_1ziboq3",  // Replace with your EmailJS Template ID
+        "service_r2fvp0g", //EmailJS service ID
+        "template_l1vrywc",  // EmailJS Template ID
         form.current,
-        "Rz7W9pVF0HdDryNNL"  // Replace with your EmailJS Public Key
+        "i5DuDYosmf6g_8fW1"  // EmailJS Public Key
       )
       .then(
         () => {
