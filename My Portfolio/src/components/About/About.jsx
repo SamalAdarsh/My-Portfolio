@@ -1,7 +1,7 @@
 // import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import Tilt from 'react-parallax-tilt';
-import profileImage from '../../assets/profile-pic.jpg';
+import profileImage from '../../assets/profile-pic.png';
 
 const About = () => {
   return (
@@ -14,7 +14,7 @@ const About = () => {
         <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0">
           {/* Greeting */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
-            Hi, I am
+            Hi, I'm
           </h1>
           {/* Name */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
