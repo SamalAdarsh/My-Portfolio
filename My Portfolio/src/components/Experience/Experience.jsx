@@ -8,7 +8,9 @@ const Experience = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">EXPERIENCE</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold">
+          <span className="animated-gradient-text">EXPERIENCE</span>
+        </h2>
         <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
           A collection of my work experience and the roles I have taken in
@@ -44,7 +46,6 @@ const Experience = () => {
             >
               {/* Flex container for image and text */}
               <div className="flex items-center gap-4 sm:gap-6">
-                
                 {/* Company Logo/Image Inside Card - Fixed visibility & scaling */}
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg flex-shrink-0 flex items-center justify-center p-2 shadow-inner">
                   <img
@@ -63,12 +64,16 @@ const Experience = () => {
                     {experience.company}
                   </h4>
                   {/* Date right below the company name */}
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{experience.date}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    {experience.date}
+                  </p>
                 </div>
               </div>
 
-              <p className="mt-6 text-gray-400 text-sm sm:text-base leading-relaxed">{experience.desc}</p>
-              
+              <p className="mt-6 text-gray-400 text-sm sm:text-base leading-relaxed">
+                {experience.desc}
+              </p>
+
               <div className="mt-6">
                 <h5 className="font-medium text-white mb-3">Skills:</h5>
                 <div className="flex flex-wrap gap-2">

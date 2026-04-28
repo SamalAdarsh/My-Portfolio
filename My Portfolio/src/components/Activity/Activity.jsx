@@ -14,7 +14,10 @@ const Activity = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-white">DAYS I CODE</h2>
+        {/* <h2 className="text-4xl font-bold text-white">DAYS I CODE</h2> */}
+        <h2 className="text-3xl sm:text-4xl font-bold">
+        <span className="animated-gradient-text">DAYS I CODE</span>
+      </h2>
         <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
           Consistency is key. Here is my daily activity for building projects and solving DSA problems.
