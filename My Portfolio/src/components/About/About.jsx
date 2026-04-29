@@ -1,7 +1,6 @@
 
+// import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
-// import Tilt from 'react-parallax-tilt';
-// Import the AvatarLoader component. Make sure the path matches where you saved it!
 import AvatarLoader from '../common/AvatarLoader'; 
 
 const About = () => {
@@ -11,10 +10,12 @@ const About = () => {
       className="py-4 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans mt-16 md:mt-24 lg:mt-32"
     >
       <div className="flex flex-col-reverse md:flex-row justify-between items-center">
+        
         {/* ========================================== */}
         {/* Left Side: Text Content & Animations       */}
         {/* ========================================== */}
-        <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0">
+        {/* FIX: Increased mobile top margin (mt-16) to make room for the CTA text! */}
+        <div className="md:w-1/2 text-center md:text-left mt-16 sm:mt-20 md:mt-0 z-10">
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
             Hi, I'm
@@ -29,7 +30,7 @@ const About = () => {
             <span className="text-white">I am a </span>
             <TypeAnimation
               sequence={[
-                'Fullstack AI Engineer', // Updated based on your recent career switch focus!
+                'Fullstack AI Engineer', 
                 2000, 
                 'App Developer',
                 2000,
@@ -72,12 +73,13 @@ const About = () => {
         {/* ========================================== */}
         {/* Right Side: Animated Meta-Style Avatar     */}
         {/* ========================================== */}
-        {/* Right Side: Animated Meta-Style Avatar */}
-        <div className="md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0">
-         <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[450px] lg:h-[450px]">
+        {/* FIX: Added mb-8 on mobile to ensure the CTA has room to breathe */}
+        <div className="md:w-1/2 flex justify-center md:justify-end mb-8 md:mb-0">
+          <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[450px] lg:h-[450px]">
             <AvatarLoader />
           </div>
         </div>
+        
       </div>
     </section>
   );
