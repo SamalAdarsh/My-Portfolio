@@ -1,5 +1,4 @@
-
-import  { useState } from "react";
+import { useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
 const Activity = () => {
@@ -7,6 +6,7 @@ const Activity = () => {
 
   const githubUsername = "SamalAdarsh"; 
   const leetcodeUsername = "AdarshSamal006"; 
+
   return (
     <section
       id="activity"
@@ -14,10 +14,9 @@ const Activity = () => {
     >
       {/* Section Title */}
       <div className="text-center mb-12">
-        {/* <h2 className="text-4xl font-bold text-white">DAYS I CODE</h2> */}
         <h2 className="text-3xl sm:text-4xl font-bold">
-        <span className="animated-gradient-text">DAYS I CODE</span>
-      </h2>
+          <span className="animated-gradient-text">DAYS I CODE</span>
+        </h2>
         <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
           Consistency is key. Here is my daily activity for building projects and solving DSA problems.
@@ -52,18 +51,13 @@ const Activity = () => {
 
       {/* Graph Container */}
       <div className="w-full flex justify-center">
-        {/* Removed overflow from this outer card so padding stays intact */}
         <div className="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl p-4 sm:p-10 max-w-5xl w-full">
           
           {/* GitHub Tab */}
           {activeTab === "github" && (
-            /* Added an inner scrolling wrapper with bottom padding to protect text */
-            <div className="w-full overflow-x-auto pb-4 custom-scrollbar">
-              <div 
-                /* justify-start on mobile, justify-center on desktop */
-                className="flex justify-start md:justify-center animate-fade-in min-w-[750px]"
-                style={{ color: "white" }} 
-              >
+            <div className="w-full flex justify-center animate-fade-in pb-4">
+              {/* FIX: Removed overflow and min-width. Added SVG scaling classes to force responsiveness */}
+              <div className="w-full max-w-full text-white [&>article]:w-full [&_svg]:w-full [&_svg]:h-auto">
                 <GitHubCalendar
                   username={githubUsername}
                   colorScheme="dark"
@@ -98,8 +92,3 @@ const Activity = () => {
 };
 
 export default Activity;
-
-
-
-
-  
