@@ -53,3 +53,27 @@ html {
     display: inline-block; /* Required for the background clipping to work properly */
   }
 }
+
+
+/* src/index.css (or where your global styles live) */
+
+@layer utilities {
+  /* This creates a smooth, continuous spin */
+  @keyframes metaSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-meta-spin {
+    animation: metaSpin 1.5s linear infinite;
+  }
+}
+
+@keyframes handTap {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(0.9) translate(-5px, -5px); } /* Moves inward like a click */
+}
+
+.animate-hand-tap {
+  animation: handTap 0.8s ease-in-out infinite;
+}
