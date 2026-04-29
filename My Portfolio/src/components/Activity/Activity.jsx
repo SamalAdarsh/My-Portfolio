@@ -3,6 +3,7 @@ import { GitHubCalendar } from "react-github-calendar";
 
 const Activity = () => {
   const [activeTab, setActiveTab] = useState("github");
+  const [isLeetCodeLoaded, setIsLeetCodeLoaded] = useState(false);
 
   const githubUsername = "SamalAdarsh"; 
   const leetcodeUsername = "AdarshSamal006"; 
@@ -51,13 +52,21 @@ const Activity = () => {
 
       {/* Graph Container */}
       <div className="w-full flex justify-center">
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl p-4 sm:p-10 max-w-5xl w-full">
+        {/* FIX: Added a dynamic class for max-width! 
+          GitHub gets 'max-w-4xl' (wide). 
+          LeetCode shrinks to 'lg:max-w-2xl' on desktop. 
+          'transition-all duration-500' makes the resizing smooth!
+        */}
+        <div 
+          className={`bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl p-4 sm:p-8 w-full min-h-[300px] flex items-center justify-center mx-auto transition-all duration-500 ${
+            activeTab === "github" ? "max-w-4xl" : "max-w-4xl lg:max-w-2xl"
+          }`}
+        >
           
           {/* GitHub Tab */}
           {activeTab === "github" && (
-            <div className="w-full flex justify-center animate-fade-in pb-4">
-              {/* FIX: Removed overflow and min-width. Added SVG scaling classes to force responsiveness */}
-              <div className="w-full max-w-full text-white [&>article]:w-full [&_svg]:w-full [&_svg]:h-auto">
+            <div className="w-full flex justify-center animate-fade-in">
+              <div className="flex justify-center max-w-full text-white [&>article]:max-w-full [&_svg]:max-w-full [&_svg]:h-auto">
                 <GitHubCalendar
                   username={githubUsername}
                   colorScheme="dark"
@@ -74,12 +83,33 @@ const Activity = () => {
 
           {/* LeetCode Tab */}
           {activeTab === "leetcode" && (
-            <div className="w-full flex flex-col items-center animate-fade-in text-center pb-4">
-              <div className="flex justify-center w-full">
+            <div className="w-full flex flex-col items-center animate-fade-in text-center">
+              <div className="flex justify-center w-full relative">
+                
+                {/* 1. THE NEON SKELETON LOADER */}
+                {!isLeetCodeLoaded && (
+                  /* FIX: Added lg:max-w-[550px] to make the loader smaller on desktop */
+                  <div className="w-full max-w-2xl lg:max-w-[550px] min-h-[220px] sm:min-h-[280px] lg:min-h-[240px] rounded-xl border border-gray-800 bg-[#131025] flex flex-col items-center justify-center shadow-[0_0_15px_rgba(130,69,236,0.1)]">
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4">
+                      <div className="absolute inset-0 rounded-full border-t-2 border-purple-600 animate-spin"></div>
+                      <div className="absolute inset-2 rounded-full border-r-2 border-purple-400 animate-[spin_1.5s_reverse_infinite]"></div>
+                      <div className="absolute inset-4 rounded-full border-b-2 border-teal-400 animate-spin"></div>
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold text-purple-400 tracking-widest uppercase animate-pulse">
+                      Fetching Stats...
+                    </span>
+                  </div>
+                )}
+
+                {/* 2. THE ACTUAL LEETCODE IMAGE */}
                 <img 
                   src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=dark&font=Poppins&ext=heatmap`} 
                   alt="LeetCode Stats" 
-                  className="w-full max-w-2xl rounded-xl shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] border border-gray-700"
+                  onLoad={() => setIsLeetCodeLoaded(true)}
+                  /* FIX: Added lg:max-w-[550px] to make the image smaller on desktop */
+                  className={`w-full max-w-2xl lg:max-w-[550px] rounded-xl shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] border border-gray-700 transition-opacity duration-700 ease-in-out ${
+                    isLeetCodeLoaded ? "opacity-100 block" : "opacity-0 absolute -z-10"
+                  }`}
                 />
               </div>
             </div>
