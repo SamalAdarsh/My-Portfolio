@@ -161,7 +161,7 @@ export const education = [
     school: "KIIT University, Bhubaneswar",
     date: "June 2019 - May 2023",
     grade: "9.22 CGPA",
-    desc: "I have completed my Bachelor's degree (B-TECH) in Information Technology from KIIT University, Bhubaneswar. During my time at KIIT, I gained a strong foundation in programming, software development, and computer science principles. I have studied courses such as Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Web Development, and Software Engineering. I actively participated in various workshops and technical events, which enhanced my skills and knowledge. My experience at KIIT University has been instrumental in shaping my technical abilities and professional growth.",
+    desc: "Graduated with a B.Tech in Information Technology from KIIT University, Bhubaneswar. Built a strong foundation in core computer science principles, including Data Structures, OOP, and Web Development. Actively engaged in technical events and workshops to bridge the gap between academic theory and practical software engineering.",
     degree: "B.Tech in Information Technology (IT)",
   },
   {
