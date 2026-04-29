@@ -1,19 +1,22 @@
+// src/components/Skills/Skills.jsx
 import  { useState, useEffect } from "react";
 import { SkillsInfo } from "../../utils/constants";
 import Tilt from "react-parallax-tilt";
 
-// 1. Individual Skill Card Component (handles its own orbit/expand state)
+// Sub-Component for each Skill Category Card
+// src/components/Skills/Skills.jsx (Replace ONLY the SkillCard component)
+
 const SkillCard = ({ category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [rotation, setRotation] = useState(0);
 
-  // Continuous revolving animation loop
+  // continuous revolving animation loop
   useEffect(() => {
-    if (isExpanded) return; // Stop spinning when expanded
+    if (isExpanded) return; 
 
     let animationFrameId;
     const animate = () => {
-      setRotation((prev) => (prev + 0.3) % 360); // 0.3 controls the speed
+      setRotation((prev) => (prev + 0.3) % 360); 
       animationFrameId = requestAnimationFrame(animate);
     };
     
@@ -68,18 +71,15 @@ const SkillCard = ({ category }) => {
           // ==========================================
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center animate-fade-in">
             
-            {/* The 3D Wireframe Globe background */}
             <div className="absolute inset-0 rounded-full border border-gray-600/30" />
             <div className="absolute inset-0 rounded-full border border-gray-600/30" style={{ transform: "rotateX(65deg)" }} />
             <div className="absolute inset-0 rounded-full border border-gray-600/30" style={{ transform: "rotateY(65deg)" }} />
 
-            {/* Orbiting Skill Logos */}
             {category.skills.map((skill, index) => {
               const totalSkills = category.skills.length;
               const angle = (index / totalSkills) * 360 + rotation;
               const radian = (angle * Math.PI) / 180;
-              const radius = 105; // Distance from center
-              
+              const radius = 105; 
               const x = radius * Math.cos(radian);
               const y = radius * Math.sin(radian);
 
@@ -100,17 +100,32 @@ const SkillCard = ({ category }) => {
               );
             })}
 
-            {/* Center Animated Expand Icon */}
-            <div className="absolute flex items-center justify-center w-12 h-12 rounded-full border border-gray-700 bg-[#131025]/80 backdrop-blur-sm select-none pointer-events-none group-hover:border-purple-500 transition-colors">
-              <div className="relative w-6 h-6 animate-pulse">
-                {/* Top Left */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#8245ec] rounded-tl-sm transform translate-x-0 translate-y-0 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform"></div>
-                {/* Top Right */}
-                <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#8245ec] rounded-tr-sm transform translate-x-0 translate-y-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></div>
-                {/* Bottom Left */}
-                <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#8245ec] rounded-bl-sm transform translate-x-0 translate-y-0 group-hover:-translate-x-1 group-hover:translate-y-1 transition-transform"></div>
-                {/* Bottom Right */}
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#8245ec] rounded-br-sm transform translate-x-0 translate-y-0 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></div>
+            {/* ==========================================
+                NEW: Envato-Style Swooping Pointer & Ripple
+               ========================================== */}
+            <div className="absolute flex items-center justify-center w-14 h-14 rounded-full border border-gray-700 bg-[#131025]/80 backdrop-blur-sm select-none pointer-events-none group-hover:border-purple-500 transition-colors overflow-visible">
+              
+              {/* This inner div handles the swooping and clicking motion */}
+              <div className="relative w-8 h-8 animate-envato-motion">
+                
+                {/* 1. Cursor Arrow SVG (White) */}
+                <svg 
+                  className="w-full h-full text-white drop-shadow-[0_0_8px_rgba(130,69,236,0.5)] transform -translate-x-0.5 -translate-y-0.5" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13l6 6" />
+                </svg>
+                
+                {/* 2. Synchronized Ripple Effect */}
+                {/* The ripple fires exactly when the arrow physically scales down */}
+                <div className="absolute top-[-8px] left-[-8px] w-8 h-8 pointer-events-none">
+                  <div className="w-full h-full rounded-full border-[#8245ec] shadow-[0_0_15px_rgba(130,69,236,0.6)] animate-envato-ripple"></div>
+                </div>
+              
               </div>
             </div>
 
@@ -121,7 +136,7 @@ const SkillCard = ({ category }) => {
   );
 };
 
-// 2. Main Skills Section Wrapper
+// Main Skills Component
 const Skills = () => (
   <section
     id="skills"
@@ -129,7 +144,6 @@ const Skills = () => (
   >
     {/* Section Title */}
     <div className="text-center mb-8">
-      {/* <h2 className="text-3xl sm:text-4xl font-bold text-white">SKILLS</h2> */}
       <h2 className="text-3xl sm:text-4xl font-bold">
         <span className="animated-gradient-text">SKILLS</span>
       </h2>
@@ -139,7 +153,7 @@ const Skills = () => (
       </p>
     </div>
 
-    {/* Rendering the Custom Skill Cards */}
+    {/* Rendering Category Cards */}
     <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
       {SkillsInfo.map((category) => (
         <SkillCard key={category.title} category={category} />
