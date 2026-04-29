@@ -1,5 +1,4 @@
-
-import {  FaLinkedin,  FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 const Footer = () => {
   // Smooth scroll function
@@ -21,15 +20,15 @@ const Footer = () => {
           {[
             { name: "About", id: "about" },
             { name: "Skills", id: "skills" },
-            {name: "Days I Code", id: "activity"},
             { name: "Experience", id: "experience" },
             { name: "Projects", id: "projects" },
             { name: "Education", id: "education" },
+            { name: "Days I Code", id: "activity" },
           ].map((item, index) => (
             <button
               key={index}
               onClick={() => handleScroll(item.id)}
-              className="hover:text-purple-500 text-sm sm:text-base my-1"
+              className="hover:text-purple-500 text-sm sm:text-base my-1 whitespace-nowrap"
             >
               {item.name}
             </button>
@@ -39,11 +38,12 @@ const Footer = () => {
         {/* Social Media Icons - Responsive */}
         <div className="flex flex-wrap justify-center space-x-4 mt-6">
           {[
-            
+            // ADDED: Phone & WhatsApp placed first so they appear on the left
+            // IMPORTANT: Replace the 'XXXXXXXXXX' with your actual 10-digit number.
+            { icon: <FaPhoneAlt />, link: "tel:+917749046123" }, 
+            { icon: <FaWhatsapp />, link: "https://wa.me/917749046123" }, 
             { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/adarsh-kumar-samal-9389b5207/" },
             { icon: <FaGithub />, link: "https://github.com/SamalAdarsh" },
-         
-            
           ].map((item, index) => (
             <a
               key={index}
