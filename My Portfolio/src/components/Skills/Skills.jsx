@@ -4,7 +4,6 @@ import { SkillsInfo } from "../../utils/constants";
 import Tilt from "react-parallax-tilt";
 
 // Sub-Component for each Skill Category Card
-// src/components/Skills/Skills.jsx (Replace ONLY the SkillCard component)
 
 const SkillCard = ({ category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -27,9 +26,44 @@ const SkillCard = ({ category }) => {
 
   return (
     <div
-      onClick={() => setIsExpanded(!isExpanded)}
-      className="cursor-pointer bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 min-h-[350px] mb-10 w-full sm:w-[48%] rounded-2xl border border-white shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] flex flex-col items-center justify-center transition-all duration-500 hover:shadow-[0_0_30px_2px_rgba(130,69,236,0.6)] group"
+      // FIX: The main card now ONLY expands. It won't accidentally close if you click the background.
+      onClick={() => !isExpanded && setIsExpanded(true)}
+      // ADDED 'relative' here so the close button anchors perfectly to the top-right corner
+      className="relative cursor-pointer bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 min-h-[350px] mb-10 w-full sm:w-[48%] rounded-2xl border border-white shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] flex flex-col items-center justify-center transition-all duration-500 hover:shadow-[0_0_30px_2px_rgba(130,69,236,0.6)] group"
     >
+      
+      {/* ==========================================
+          NEW: Top-Right Collapse Button
+          ========================================== */}
+      {isExpanded && (
+        <div 
+          onClick={(e) => {
+            e.stopPropagation(); // Prevents the main card click event from firing
+            setIsExpanded(false); // Triggers the return to the sphere animation
+          }}
+          title="Back to Sphere"
+          className="absolute top-4 right-4 p-2 rounded-full bg-[#131025] border border-gray-700 text-gray-400 hover:text-purple-400 hover:border-purple-500 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)] hover:shadow-[0_0_15px_rgba(130,69,236,0.5)] z-20"
+        >
+          {/* 'Shrink/Minimize' Icon SVG */}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M8 3v3a2 2 0 0 1-2 2H3" />
+            <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
+            <path d="M3 16h3a2 2 0 0 1 2 2v3" />
+            <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
+          </svg>
+        </div>
+      )}
+
       <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-6 text-center">
         {category.title}
       </h3>
@@ -100,15 +134,11 @@ const SkillCard = ({ category }) => {
               );
             })}
 
-            {/* ==========================================
-                NEW: Envato-Style Swooping Pointer & Ripple
-               ========================================== */}
+            {/* Envato-Style Swooping Pointer & Ripple */}
             <div className="absolute flex items-center justify-center w-14 h-14 rounded-full border border-gray-700 bg-[#131025]/80 backdrop-blur-sm select-none pointer-events-none group-hover:border-purple-500 transition-colors overflow-visible">
-              
-              {/* This inner div handles the swooping and clicking motion */}
               <div className="relative w-8 h-8 animate-envato-motion">
                 
-                {/* 1. Cursor Arrow SVG (White) */}
+                {/* Pointer SVG */}
                 <svg 
                   className="w-full h-full text-white drop-shadow-[0_0_8px_rgba(130,69,236,0.5)] transform -translate-x-0.5 -translate-y-0.5" 
                   fill="none" 
@@ -120,12 +150,10 @@ const SkillCard = ({ category }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 13l6 6" />
                 </svg>
                 
-                {/* 2. Synchronized Ripple Effect */}
-                {/* The ripple fires exactly when the arrow physically scales down */}
+                {/* Click Ripple */}
                 <div className="absolute top-[-8px] left-[-8px] w-8 h-8 pointer-events-none">
                   <div className="w-full h-full rounded-full border-[#8245ec] shadow-[0_0_15px_rgba(130,69,236,0.6)] animate-envato-ripple"></div>
                 </div>
-              
               </div>
             </div>
 
