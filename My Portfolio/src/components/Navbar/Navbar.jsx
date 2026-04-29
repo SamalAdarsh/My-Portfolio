@@ -2,22 +2,50 @@ import  { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+const menuItems = [
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "activity", label: "Days I Code" }, 
+  { id: "experience", label: "Experience" },
+  { id: "work", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" }, 
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Detect scroll and change navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      let currentSection = "";
+      
+      menuItems.forEach((item) => {
+        const section = document.getElementById(item.id);
+        if (section) {
+          const sectionTop = section.offsetTop - 150;
+          if (window.scrollY >= sectionTop) {
+            currentSection = item.id;
+          }
+        }
+      });
+
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        currentSection = menuItems[menuItems.length - 1].id;
+      }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); 
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Smooth scroll function
   const handleMenuItemClick = (sectionId) => {
     setActiveSection(sectionId);
     setIsOpen(false);
@@ -28,17 +56,10 @@ const Navbar = () => {
     }
   };
 
-  const menuItems = [
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "work", label: "Projects" },
-    { id: "education", label: "Education" },
-  ];
-
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
+      /* FIX: Reduced padding from lg:px-[20vw] to lg:px-[8vw] xl:px-[10vw] to push items to the corners */
+      className={`fixed top-0 w-full z-50 transition-all duration-300 px-[5vw] md:px-[5vw] lg:px-[8vw] xl:px-[10vw] ${
         isScrolled 
           ? "bg-[#050414]/60 backdrop-blur-md shadow-lg shadow-purple-900/10 border-b border-white/5" 
           : "bg-transparent"
@@ -55,11 +76,11 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-gray-300">
+        <ul className="hidden md:flex space-x-6 lg:space-x-8 text-gray-300">
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`cursor-pointer hover:text-[#8245ec] transition-colors ${
+              className={`cursor-pointer hover:text-[#8245ec] transition-colors whitespace-nowrap ${
                 activeSection === item.id ? "text-[#8245ec]" : ""
               }`}
             >
@@ -70,7 +91,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Social Icons */}
+        {/* Social Icons (Desktop) */}
         <div className="hidden md:flex space-x-4">
           <a
             href="https://github.com/SamalAdarsh"
@@ -124,7 +145,7 @@ const Navbar = () => {
             ))}
             <div className="flex space-x-6 pt-4 border-t border-white/10 w-3/4 justify-center">
               <a
-                href="https://github.com/codingmastr"
+                href="https://github.com/SamalAdarsh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -132,7 +153,7 @@ const Navbar = () => {
                 <FaGithub size={26} />
               </a>
               <a
-                href="https://www.linkedin.com/in/tarun-kaushik-553b441a4"
+                href="https://www.linkedin.com/in/adarsh-kumar-samal-9389b5207/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
