@@ -106,52 +106,45 @@ export const SkillsInfo = [
 ];
 
 export const experiences = [
-  {
-    id: 0,
-    img: ttlLogo,
-    role: "Software Developer",
-    company: "Tata Technologies Limited",
-    date: "August 2023 - Present",
-    desc: "Developed dynamic and scalable web applications using the MERN stack, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React JS",
-      "TypeScript",
-      "Node JS",
-      "Tailwind CSS",
-      "MongoDb",
-      "Redux",
-      " Next Js",
-    ],
-  },
-  {
-    id: 1,
-    img: hrcLogo,
-    role: "ML Intern",
-    company: "High Radius Corporation",
-    date: "April 2022 - May 2023",
-    desc: "Contributed to innovative projects as a Fullstack Engineer, leading both frontend and backend development using technologies such as HTML, CSS, JavaScript, PHP, SQL, Bootstrap, and ReactJS. Worked closely with the team to deliver responsive, high-performance web applications and improve user experience through seamless integration of various technologies.",
-    skills: [
-      "ReactJS",
-      "Redux",
-      "JavaScript",
-      "Tailwind CSS",
-      "HTML",
-      "CSS",
-      "SQL",
-    ],
-  },
-  {
-    id: 2,
-    img: hrcLogo,
-    role: "Winter Intern",
-    company: "High Radius Corporation",
-    date: "December 2021 - Feburary 2022",
-    desc: "Worked as a Frontend Developer Intern, designing and implementing scalable UI components and responsive websites using HTML, CSS, JavaScript, Bootstrap, and Material UI. Collaborated with the design team to translate wireframes and prototypes from Figma into interactive, user-friendly web pages.",
-    skills: ["HTML", "CSS", "Javascript", "Bootstrap", "Figma", "Material UI"],
-  },
+{
+  id: 0,
+  img: ttlLogo,
+  role: "Solution Developer",
+  company: "Tata Technologies Limited",
+  date: "August 2023 - Present",
+  desc: [
+    "Built a unified MES dashboard using React.js and Node.js to automate legacy production sequencing workflows, replacing manual SQL/Excel steps and saving 15+ hours/week.",
+    "Improved web application performance by 40% via caching and minification in Next.js across global OEM platforms.",
+    "Ensured system reliability in live manufacturing environments and collaborated with DevOps to integrate CI/CD pipelines, significantly reducing deployment delays."
+  ],
+  skills: ["HTML", "CSS", "JavaScript", "React JS", "TypeScript", "Node JS", "Next Js", "Tailwind CSS", "MongoDb", "SQL", "Redux", "CI/CD"],
+},
+{
+  id: 1,
+  img: hrcLogo,
+  role: "ML Intern",
+  company: "High Radius Corporation",
+  date: "April 2022 - May 2023",
+  desc: [
+    "Achieved 92% model accuracy in predicting correct invoices for missed remittances through extensive feature engineering on historical AR data.",
+    "Developed a Python-based Entity Wrapper using complex Regex to automate data capture and accurately map invoice entities to backend keys.",
+    "Enhanced internal ML model reliability by leveraging OCR technology to process and label thousands of financial documents, significantly minimizing payment exceptions."
+  ],
+  skills: ["Python", "Machine Learning", "Feature Engineering", "OCR", "Regex", "SQL", "JavaScript", "ReactJS"],
+},
+{
+  id: 2,
+  img: hrcLogo,
+  role: "Winter Intern",
+  company: "High Radius Corporation",
+  date: "January 2022 - April 2022",
+  desc: [
+    "Developed a comprehensive full-stack web application from end-to-end, gaining deep exposure to the entire product development lifecycle.",
+    "Translated complex user requirements into robust data models and integrated predictive machine learning solutions.",
+    "Designed and implemented intuitive UI components using HTML, CSS, JavaScript, and Material UI, ensuring a seamless and responsive user experience."
+  ],
+  skills: ["Product Development", "Full-Stack Web Development", "Data Modeling", "Machine Learning Integration", "JavaScript", "HTML/CSS", "Material UI", "Figma"],
+},
 ];
 
 export const education = [

@@ -70,9 +70,21 @@ const Experience = () => {
                 </div>
               </div>
 
-              <p className="mt-6 text-gray-400 text-sm sm:text-base leading-relaxed">
-                {experience.desc}
-              </p>
+              {/* FIX: Render Bullet Points instead of a single paragraph */}
+              <ul className="mt-6 list-none space-y-3 text-gray-400">
+                {Array.isArray(experience.desc) ? (
+                  experience.desc.map((point, pointIndex) => (
+                    <li key={pointIndex} className="flex items-start text-sm sm:text-base leading-relaxed">
+                      <span className="text-purple-500 mr-3 mt-[2px] text-lg leading-none font-bold">▹</span>
+                      <span>{point}</span>
+                    </li>
+                  ))
+                ) : (
+                  <p className="text-sm sm:text-base leading-relaxed">
+                    {experience.desc}
+                  </p>
+                )}
+              </ul>
 
               <div className="mt-6">
                 <h5 className="font-medium text-white mb-3">Skills:</h5>

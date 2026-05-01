@@ -20,10 +20,10 @@ const Footer = () => {
           {[
             { name: "About", id: "about" },
             { name: "Skills", id: "skills" },
+            { name: "Days I Code", id: "activity" },
             { name: "Experience", id: "experience" },
             { name: "Projects", id: "projects" },
             { name: "Education", id: "education" },
-            { name: "Days I Code", id: "activity" },
           ].map((item, index) => (
             <button
               key={index}
@@ -40,9 +40,12 @@ const Footer = () => {
           {[
             // ADDED: Phone & WhatsApp placed first so they appear on the left
             // IMPORTANT: Replace the 'XXXXXXXXXX' with your actual 10-digit number.
-            { icon: <FaPhoneAlt />, link: "tel:+917749046123" }, 
-            { icon: <FaWhatsapp />, link: "https://wa.me/917749046123" }, 
-            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/adarsh-kumar-samal-9389b5207/" },
+            { icon: <FaPhoneAlt />, link: "tel:+917749046123" },
+            { icon: <FaWhatsapp />, link: "https://wa.me/917749046123" },
+            {
+              icon: <FaLinkedin />,
+              link: "https://www.linkedin.com/in/adarsh-kumar-samal-9389b5207/",
+            },
             { icon: <FaGithub />, link: "https://github.com/SamalAdarsh" },
           ].map((item, index) => (
             <a
