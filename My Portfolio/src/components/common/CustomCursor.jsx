@@ -1,30 +1,35 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
   const dotRef = useRef(null);
   const circleRef = useRef(null);
+  
+  // Detect if the device has a physical mouse ("fine pointer")
+  // If it's a touch screen (like a phone), isVisible will be false.
+  const [isVisible] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(pointer: fine)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Start off-screen so it doesn't blink in the top left corner
+    // If it's a mobile device, completely skip the event listeners to save performance
+    if (!isVisible) return;
+
     const mouse = { x: -100, y: -100 }; 
     const circle = { x: -100, y: -100 };
 
-    const handleMove = (e) => {
-      // Support both standard mouse movements AND mobile touch swipe movements
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-      mouse.x = clientX;
-      mouse.y = clientY;
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
       
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0)`;
       }
     };
 
-    // Listen for both desktop mouse and mobile touch events
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleMove, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove);
 
     const render = () => {
       circle.x += (mouse.x - circle.x) * 0.15; 
@@ -39,11 +44,13 @@ const CustomCursor = () => {
     let animationId = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("touchmove", handleMove);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
     };
-  }, []); // The isVisible state has been completely removed
+  }, [isVisible]);
+
+  // If the device doesn't use a mouse, render absolutely nothing
+  if (!isVisible) return null;
 
   return (
     <>
