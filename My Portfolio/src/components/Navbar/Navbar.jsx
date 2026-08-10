@@ -1,15 +1,15 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const menuItems = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
-  { id: "activity", label: "Days I Code" }, 
+  { id: "activity", label: "Days I Code" },
   { id: "experience", label: "Experience" },
   { id: "work", label: "Projects" },
   { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" }, 
+  { id: "contact", label: "Contact" },
 ];
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
 
       let currentSection = "";
-      
+
       menuItems.forEach((item) => {
         const section = document.getElementById(item.id);
         if (section) {
@@ -33,7 +33,10 @@ const Navbar = () => {
         }
       });
 
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 50
+      ) {
         currentSection = menuItems[menuItems.length - 1].id;
       }
 
@@ -41,8 +44,8 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
-    
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -57,12 +60,14 @@ const Navbar = () => {
   };
 
   return (
+    // Inside src/components/Navbar/Navbar.jsx, update ONLY the <nav> opening tag:
+
     <nav
-      /* FIX: Reduced padding from lg:px-[20vw] to lg:px-[8vw] xl:px-[10vw] to push items to the corners */
-      className={`fixed top-0 w-full z-50 transition-all duration-300 px-[5vw] md:px-[5vw] lg:px-[8vw] xl:px-[10vw] ${
-        isScrolled 
-          ? "bg-[#050414]/60 backdrop-blur-md shadow-lg shadow-purple-900/10 border-b border-white/5" 
-          : "bg-transparent"
+      /* Made the background solid bg-[#050414] to cleanly mask the starfield */
+      className={`fixed top-0 w-full z-50 transition-all duration-300 px-[5vw] md:px-[5vw] lg:px-[8vw] xl:px-[10vw] bg-[#050414] ${
+        isScrolled
+          ? "shadow-lg shadow-purple-900/10 border-b border-white/5"
+          : ""
       }`}
     >
       <div className="text-white py-5 flex justify-between items-center">
